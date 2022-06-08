@@ -18,9 +18,18 @@ function AddItem(props) {
         setBrand("");
     }
 
+    let headerTitle, buttonTitle;
+    if (!props.isUpdate) {
+        headerTitle = <h2 className="text-lg font-bold">Add Item</h2>
+        buttonTitle = <button className="bg-indigo-500 px-5 py-3 rounded text-white font-bold hover:bg-white hover:text-indigo-500" onClick={AddItemClicked} type="button">Add Item</button>
+    } else {
+        headerTitle = <h2 className="text-lg font-bold">Update Item</h2>
+        buttonTitle = <button className="bg-indigo-500 px-5 py-3 rounded text-white font-bold hover:bg-white hover:text-indigo-500" onClick={AddItemClicked} type="button">Update Item</button>
+    }
+
     return(
         <div className="col-span-2 md:col-span-1 box-border p-4 border-2 drop-shadow-md">
-            <h2 className="text-lg font-bold">Add Item</h2>
+            { headerTitle }
             <form className="grid gap-y-1 grid-cols-1">
                 <label htmlFor="name-field">Name:</label>
                 <input id="name-field" type="text" value={name} onChange={(e) => setName(e.target.value)} />
@@ -30,7 +39,7 @@ function AddItem(props) {
                 <input id="type-field" type="text" value={type} onChange={(e) => setType(e.target.value)} />
                 <label htmlFor="brand-field">Brand:</label>
                 <input id="brand-field" type="text" value={brand} onChange={(e) => setBrand(e.target.value)} />
-                <button className="bg-indigo-500 px-5 py-3 rounded text-white font-bold hover:bg-white hover:text-indigo-500" onClick={AddItemClicked} type="button">Add Item</button>
+                { buttonTitle }
             </form>
         </div>
     );

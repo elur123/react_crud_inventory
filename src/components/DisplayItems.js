@@ -1,4 +1,4 @@
-function DisplayItems(props) {
+function DisplayItems({ items, deleteItem, selectUpdate }) {
     const showItem = (item, index) => {
         return (
             <tr className="hover:bg-white" key={index}>
@@ -8,8 +8,8 @@ function DisplayItems(props) {
                 <td className="border border-emerald-500 px-4 py-2 text-emerald-600 font-medium">{item.type}</td>
                 <td className="border border-emerald-500 px-4 py-2 text-emerald-600 font-medium">{item.brand}</td>
                 <td className="border border-emerald-500 px-4 py-2 text-emerald-600 font-medium">
-                    <a href="#">Edit</a> ||  
-                    <a href="#">Delete</a>
+                    <button className="bg-indigo-800 px-5 py-3 rounded text-white font-bold hover:bg-white hover:text-indigo-800" onClick={() => selectUpdate(item)}>Update</button> <span></span> 
+                    <button className="bg-red-800 px-5 py-3 rounded text-white font-bold hover:bg-white hover:text-red-800" onClick={() => deleteItem(item)}>Delete</button>
                 </td>
             </tr>
         );
@@ -33,7 +33,7 @@ function DisplayItems(props) {
                         </tr>
                     </thead>
                     <tbody>
-                        {props.items.map(showItem)}
+                        {items.map(showItem)}
                     </tbody>
                 </table>
             </div>
